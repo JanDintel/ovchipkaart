@@ -22,9 +22,16 @@ class Scraper
     self
   end
 
+  def select_transaction_period
+    select('2013', from: 'periodes')
+    click_button 'Transacties tonen'
+    page.save_screenshot('tmp/screenshot4.png')
+    self
+  end
+
   def download_transaction_history
     click_link 'Opslaan als CSV'
-    page.save_screenshot('tmp/screenshot4.png')
+    page.save_screenshot('tmp/screenshot5.png')
     self
   end
 

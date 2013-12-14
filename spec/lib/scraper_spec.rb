@@ -25,6 +25,12 @@ describe Scraper do
     end
   end
 
+  describe '#select_transaction_period' do
+    it 'changes the time period of the transaction history' do
+      expect(subject.select_transaction_period).to have_select('periodes', selected: '2013')
+    end
+  end
+
   describe '#download_transaction_history' do
     let(:download_path) { Dir.getwd + '/tmp/downloads/*' }
 
