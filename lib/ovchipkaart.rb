@@ -1,10 +1,10 @@
+require './config/initializer'
 require 'ovchipkaart/version'
 require 'ovchipkaart/scraper'
-require 'yaml'
 
 module Ovchipkaart
 
-  # Configuration with defaults and YML support
+  # Default config
   @config = { username: 'foo', password: 'bar' }
 
   @valid_config_keys = @config.keys

@@ -1,5 +1,8 @@
 require 'ovchipkaart'
 
+# Add support files
+Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each { |file| require file }
+
 RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
@@ -7,5 +10,3 @@ RSpec.configure do |config|
 
   config.order = 'random'
 end
-
-Ovchipkaart.configure_with('spec/support/credentials.yml')
