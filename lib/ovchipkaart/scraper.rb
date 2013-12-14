@@ -29,6 +29,11 @@ class Scraper
     self
   end
 
+  def checkbox_all_transactions
+    check('transactiePanel:container:transacties.declareerAlles')
+    self
+  end
+
   def download_transaction_history
     click_link 'Opslaan als CSV'
     page.save_screenshot('tmp/screenshot5.png')

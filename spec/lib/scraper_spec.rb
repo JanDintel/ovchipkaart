@@ -31,6 +31,12 @@ describe Scraper do
     end
   end
 
+  describe '#checkbox_all_transactions' do
+    it 'checks on all transactions' do
+      expect(subject.checkbox_all_transactions).to have_checked_field('transactiePanel:container:transacties.declareerAlles', checked: true)
+    end
+  end
+
   describe '#download_transaction_history' do
     let(:download_path) { Dir.getwd + '/tmp/downloads/*' }
 
