@@ -7,3 +7,5 @@ RSpec.configure do |config|
 
   config.order = 'random'
 end
+
+Ovchipkaart.configure_with('spec/support/credentials.yml')
