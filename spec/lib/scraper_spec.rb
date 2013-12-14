@@ -26,8 +26,11 @@ describe Scraper do
   end
 
   describe '#download_transaction_history' do
+    let(:download_path) { Dir.getwd + '/tmp/downloads/*' }
+
     it 'downloads the transaction history' do
-      expect(subject.download_transaction_history).to have_content 'foo'
+      # Give time to process download before calling downloads count again
+      expect{ subject.download_transaction_history; sleep 3 }.to change{ Dir[download_path].length }.by(1)
     end
   end
 end
