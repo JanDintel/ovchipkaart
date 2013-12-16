@@ -45,4 +45,10 @@ describe Scraper do
       expect{ subject.download_transaction_history; sleep 3 }.to change{ Dir[download_path].length }.by(1)
     end
   end
+
+  describe '#find_balance' do
+    it 'scrapes the balance of the transaction overview page' do
+      expect(subject.find_balance).to match /(€+\s+\d*,+\d*)+\s*(\(\d*-\d*-\d*\s\d*:\d*\))/
+    end
+  end
 end

@@ -40,6 +40,10 @@ class Scraper
     self
   end
 
+  def find_balance
+    all('span', text: /[€,\d]/)[5].text
+  end
+
   private
 
   def need_to_accept_cookies?
