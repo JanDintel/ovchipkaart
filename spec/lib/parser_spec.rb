@@ -33,8 +33,8 @@ describe Parser do
   end
 
   describe 'downloaded csv file' do
-    let(:file_1_path) { Dir.getwd + '/tmp/downloads/transacties_-0001.csv' }
-    let(:file_2_path) { Dir.getwd + '/tmp/downloads/transacties_-0002.csv' }
+    let(:file_1_path) { "#{Dir.getwd}/tmp/downloads/transacties_-0001.csv" }
+    let(:file_2_path) { "#{Dir.getwd}/tmp/downloads/transacties_-0002.csv" }
 
     before do
       File.open(file_1_path, 'w+') { |file| file.write csv_file }
