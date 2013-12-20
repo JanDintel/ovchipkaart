@@ -56,10 +56,10 @@ class Scraper
   private
 
   def need_to_accept_cookies?
-    !find_link('Ik accepteer deze cookies').nil?
+    !find_link('Ik accepteer deze cookies').nil? rescue Capybara::ElementNotFound
   end
 
   def accept_cookies
-    click_on('Ik accepteer deze cookies')
+    click_on('Ik accepteer deze cookies') rescue Capybara::ElementNotFound
   end
 end
