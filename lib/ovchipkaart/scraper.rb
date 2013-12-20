@@ -1,6 +1,17 @@
 class Scraper
   include Capybara::DSL
 
+  def self.scrape
+    scraper = new
+    scraper.visit_ovchipkaart
+    scraper.login_user
+    scraper.visit_transaction_overview
+    scraper.select_transaction_period
+    scraper.checkbox_all_transactions
+    scraper.download_transaction_history
+    scraper.find_balance
+  end
+
   def visit_ovchipkaart
     visit('https://www.ov-chipkaart.nl/login/')
     page.save_screenshot('tmp/screenshot1.png')

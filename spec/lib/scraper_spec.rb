@@ -7,6 +7,19 @@ RSpec.configure { |config| config.order = 'default' }
 describe Scraper do
   subject { described_class.new }
 
+  describe '.scrape' do
+    it 'scrapes the ovchipkaart website' do
+      expect_any_instance_of(described_class).to receive(:visit_ovchipkaart)
+      expect_any_instance_of(described_class).to receive(:login_user)
+      expect_any_instance_of(described_class).to receive(:visit_transaction_overview)
+      expect_any_instance_of(described_class).to receive(:select_transaction_period)
+      expect_any_instance_of(described_class).to receive(:checkbox_all_transactions)
+      expect_any_instance_of(described_class).to receive(:download_transaction_history)
+      expect_any_instance_of(described_class).to receive(:find_balance)
+      described_class.scrape
+    end
+  end
+
   describe '#visit_ovchipkaart' do
     it 'lands on the login page of ovchipkaart' do
       expect(subject.visit_ovchipkaart).to have_content 'Inloggen op Mijn OV-chipkaart'
