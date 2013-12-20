@@ -17,14 +17,14 @@ class Parser
 
   def sort_csv_file
     transactions.each do |row|
-      transactie = row[:transactie]
-      if transactie     == "Reis"
+      case row[:transactie]
+      when "Reis"
         journeys << row
-      elsif transactie  == "Check-in"
+      when "Check-in"
         check_ins << row
-      elsif transactie  == "Saldo opgeladen"
+      when "Saldo opgeladen"
         additions << row
-      elsif transactie  == "Product op kaart gezet"
+      when "Product op kaart gezet"
         products << row
       else
         others << row
