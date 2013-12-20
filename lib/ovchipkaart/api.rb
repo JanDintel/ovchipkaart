@@ -1,12 +1,16 @@
 class Api
-  attr_reader :scraper, :parser
+  attr_reader :parser
 
   def initialize
-    @scraper = scrape_ovchipkaart
     @parser = parse_transactions
   end
 
   def balance
+    balance_and_date[:balance]
+  end
+
+  def last_updated
+    balance_and_date[:date]
   end
 
   def journeys
@@ -33,8 +37,13 @@ class Api
     parser.others
   end
 
-  def scrape_ovchipkaart
-    scraper = Scraper.new
+  def balance_and_date
+    regex = scraper.balance.match(/(€.*)(\(.*\))/)
+    {balance: regex[1].strip, date: regex[2]}
+  end
+
+  def scraper
+    @scraper ||= Scraper.scrape
   end
 
   def parse_transactions

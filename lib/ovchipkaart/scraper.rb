@@ -12,6 +12,7 @@ class Scraper
     scraper.checkbox_all_transactions
     scraper.download_transaction_history
     scraper.find_balance
+    scraper
   end
 
   def visit_ovchipkaart

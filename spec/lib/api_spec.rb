@@ -32,9 +32,13 @@ describe Api do
 
   describe 'public API' do
     let(:csv_file)  { File.read 'spec/fixtures/test_transaction_1.csv' }
-    before { Parser.any_instance.stub(:csv_file).and_return csv_file }
+    before do
+      Scraper.any_instance.stub(:balance).and_return "€ 30,51 (19-12-2013 20:57)"
+      Parser.any_instance.stub(:csv_file).and_return csv_file
+    end
 
-    specify { expect(subject.balance).to              eql 'foo' }
+    specify { expect(subject.balance).to              eql '€ 30,51' }
+    specify { expect(subject.last_updated).to         eql '(19-12-2013 20:57)' }
     specify { expect(subject.journeys).to             eql journeys }
     specify { expect(subject.checkins).to             eql checkins }
     specify { expect(subject.forgotten_checkouts).to  eql forgotten_checkouts }
