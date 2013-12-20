@@ -1,6 +1,8 @@
 class Scraper
   include Capybara::DSL
 
+  attr_reader :balance
+
   def self.scrape
     scraper = new
     scraper.visit_ovchipkaart
@@ -52,7 +54,7 @@ class Scraper
   end
 
   def find_balance
-    all('span', text: /[€,\d]/)[5].text
+    @balance = all('span', text: /[€,\d]/)[5].text
   end
 
   private

@@ -60,8 +60,10 @@ describe Scraper do
   end
 
   describe '#find_balance' do
+    before { subject.find_balance }
+
     it 'scrapes the balance of the transaction overview page' do
-      expect(subject.find_balance).to match /(€+\s+\d*,+\d*)+\s*(\(\d*-\d*-\d*\s\d*:\d*\))/
+      expect(subject.balance).to match /(€+\s+\d*,+\d*)+\s*(\(\d*-\d*-\d*\s\d*:\d*\))/
     end
   end
 end
