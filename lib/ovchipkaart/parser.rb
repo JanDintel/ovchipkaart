@@ -59,6 +59,5 @@ module Ovchipkaart
     def transactions
       @transactions ||= parse_csv_file.to_a.map { |row| row.to_hash }
     end
-
   end
 end
