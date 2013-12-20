@@ -1,4 +1,4 @@
-require './config/initializer'
+require 'ovchipkaart/setup'
 require 'ovchipkaart/version'
 require 'ovchipkaart/scraper'
 require 'ovchipkaart/parser'

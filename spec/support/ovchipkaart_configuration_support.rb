@@ -1,1 +1,1 @@
-Ovchipkaart.configure_with('./config/credentials.yml')
+Ovchipkaart.configure_with('spec/support/credentials.yml')
