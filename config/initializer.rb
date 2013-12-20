@@ -14,3 +14,4 @@ Capybara.register_driver :selenium_chrome do |app|
 end
 
 Capybara.default_driver = :selenium_chrome
+Capybara.run_server = false
