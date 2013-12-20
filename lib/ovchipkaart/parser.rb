@@ -1,7 +1,7 @@
 require 'csv'
 
 class Parser
-  attr_reader :journeys, :check_ins, :additions, :others, :products
+  attr_reader :journeys, :check_ins, :additions, :others, :products, :forgotten_check_outs
 
   def initialize
     @journeys   = []
@@ -9,6 +9,7 @@ class Parser
     @additions  = []
     @others     = []
     @products   = []
+    @forgotten_check_outs = []
   end
 
   def self.process_transactions
@@ -16,20 +17,28 @@ class Parser
   end
 
   def sort_csv_file
-    transactions.each do |row|
-      case row[:transactie]
+    transactions_enum = transactions.each
+    begin
+      transaction = transactions_enum.next
+      case transaction[:transactie]
       when "Reis"
-        journeys << row
+        journeys << transaction
       when "Check-in"
-        check_ins << row
+        if transactions_enum.peek[:transactie] == "Check-in"
+          forgotten_check_outs << transaction
+        else
+          check_ins << transaction
+        end
       when "Saldo opgeladen"
-        additions << row
+        additions << transaction
       when "Product op kaart gezet"
-        products << row
+        products << transaction
       else
-        others << row
+        others << transaction
       end
-    end
+    rescue StopIteration
+      break
+    end while true
   end
 
   def parse_csv_file

@@ -16,11 +16,13 @@ describe Parser do
     before  { csv_file_stub }
     before  { subject.sort_csv_file }
 
-    specify { expect(subject.journeys.count).to   eql 4 }
-    specify { expect(subject.check_ins.count).to  eql 6 }
-    specify { expect(subject.additions.count).to  eql 1 }
-    specify { expect(subject.products.count).to   eql 1 }
-    specify { expect(subject.others.count).to     eql 0 }
+    specify { expect(subject.journeys.count).to       eql 4 }
+    specify { expect(subject.check_ins.count).to      eql 5 }
+    specify { expect(subject.additions.count).to      eql 1 }
+    specify { expect(subject.products.count).to       eql 1 }
+    specify { expect(subject.others.count).to         eql 0 }
+    specify {
+      expect(subject.forgotten_check_outs.count).to   eql 1 }
   end
 
   describe '#parse_csv_file' do
