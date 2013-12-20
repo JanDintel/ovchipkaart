@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api do
+describe Ovchipkaart::Api do
   let(:journeys) do
     [{:datum=>"13-12-2013", :checkin=>"", :vertrek=>"Grote Markt", :checkuit=>"19:57", :bestemming=>"Muurbloemweg", :bedrag=>"1,76", :transactie=>"Reis", :klasse=>"", :product=>"", :opmerkingen=>""},
     {:datum=>"13-12-2013", :checkin=>"", :vertrek=>"Leiden Centraal", :checkuit=>"09:20", :bestemming=>"Haag HS (Den)", :bedrag=>"1,90", :transactie=>"Reis", :klasse=>"2", :product=>"Altijd Voordeel (maandabonnement)", :opmerkingen=>""},
@@ -33,8 +33,8 @@ describe Api do
   describe 'public API' do
     let(:csv_file)  { File.read 'spec/fixtures/test_transaction_1.csv' }
     before do
-      Scraper.any_instance.stub(:balance).and_return "€ 30,51 (19-12-2013 20:57)"
-      Parser.any_instance.stub(:csv_file).and_return csv_file
+      Ovchipkaart::Scraper.any_instance.stub(:balance).and_return "€ 30,51 (19-12-2013 20:57)"
+      Ovchipkaart::Parser.any_instance.stub(:csv_file).and_return csv_file
     end
 
     specify { expect(subject.balance).to              eql '€ 30,51' }
