@@ -27,7 +27,7 @@ describe Parser do
     before  { csv_file_stub }
 
     it 'parses the csv file' do
-      expect(CSV).to receive(:new).with(csv_file, { :headers=>true, :header_converters=>:symbol, :col_sep=>";" })
+      expect(CSV).to receive(:new).with(csv_file, { headers: true, header_converters: :symbol, col_sep: ";" })
       subject.parse_csv_file
     end
   end
