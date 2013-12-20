@@ -2,6 +2,7 @@ require './config/initializer'
 require 'ovchipkaart/version'
 require 'ovchipkaart/scraper'
 require 'ovchipkaart/parser'
+require 'ovchipkaart/api'
 
 module Ovchipkaart
 
