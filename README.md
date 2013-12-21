@@ -1,6 +1,7 @@
 # OV Chipkaart
 
 [![Coverage Status](https://coveralls.io/repos/JanDintel/ovchipkaart/badge.png)](https://coveralls.io/r/JanDintel/ovchipkaart)
+[![Build Status](https://travis-ci.org/JanDintel/ovchipkaart.png?branch=master)](https://travis-ci.org/JanDintel/ovchipkaart)
 
 An OV Chipkaart gem, which scrapes the OV Chipkaart website and provides an easy to use API.
 
