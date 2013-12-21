@@ -38,6 +38,8 @@ module Ovchipkaart
       parser.others
     end
 
+    private
+
     def balance_and_date
       regex = scraper.balance.match(/(€.*)(\(.*\))/)
       {balance: regex[1].strip, date: regex[2]}
