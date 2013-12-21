@@ -68,6 +68,23 @@ ov_chipkaart = Ovchipkaart::Api.new
 5. `ov_chipkaart.products` contains all the additions of products to the OV Chipkaart, such as subscriptions and discounts.
 6. `ov_chipkaart.unclassified` contains everything that couldn't be specified.
 
+## Troubleshooting
+
+**Credentials**
+
+The OV Chipkaart gem needs your credentials to login on the OV Chipkaart website.
+
+If you have trouble configuring your credentials check the YAML for syntax errors and make sure that you only specify an `username` and `password`. Otherwise it will raise an error.
+
+**Chromedriver**
+
+Make sure you have installed the latest `chromedriver`. You can use homebrew to easily install the `chromedriver`. You might try running the `chromedriver-update` command, which downloads the helper for the `chromedriver` that is used by `selenium` with `capybara`.
+
+The OV Chipkaart gem current uses `chromedriver` version `2.8.241036`.
+
+**OV Chipkaart results**
+
+Since this gem relies on scraping the OV Chipkaart website, it might break during an update of the website. If you experience this issue either help out with a Pull request or send me a message.
 
 ## Contributing
 
