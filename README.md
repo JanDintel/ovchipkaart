@@ -1,5 +1,7 @@
 # OV Chipkaart
 
+[![Coverage Status](https://coveralls.io/repos/JanDintel/ovchipkaart/badge.png)](https://coveralls.io/r/JanDintel/ovchipkaart)
+
 An OV Chipkaart gem, which scrapes the OV Chipkaart website and provides an easy to use API.
 
 The OV Chipkaart is the Dutch national transportation card for public transport. The use and transactions are regulated by the TLS.
