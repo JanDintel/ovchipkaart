@@ -88,7 +88,14 @@ Since this gem relies on scraping the OV Chipkaart website, it might break durin
 
 ## Contributing
 
-Pull requests are welcome:
+**TODO/IDEAS:**
+
+1. Clean up the downloaded files if they are too old
+2. Add configuration option for the webdriver. (Firefox and PhantonJS)
+3. Add configuration option for the download path
+4. Encrypt the credentials and decrypt them in runtime with an OTP.
+
+**Pull requests:**
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
