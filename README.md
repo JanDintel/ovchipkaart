@@ -16,9 +16,9 @@ For users with homebrew:
 
 Add the gem to your Gemfile:
 
-    ```ruby
-    gem 'ovchipkaart'
-    ```
+```ruby
+gem 'ovchipkaart'
+```
 
 You might need to update the chromedriver after you ran `bundle install`:
 
@@ -30,12 +30,12 @@ You might need to update the chromedriver after you ran `bundle install`:
 
 You need to provide your credentials from the OV Chipkaart website. You can use a hash or a YAML file:
 
-    ```ruby
-    Ovchipkaart.configure({ username: 'foo', password: 'bar'})
+```ruby
+Ovchipkaart.configure({ username: 'foo', password: 'bar'})
     
-    Ovchipkaart.configure_with(path_to_yaml_file)
-    Ovchipkaart.configure_with('config/credentials.yml')
-    ```
+Ovchipkaart.configure_with(path_to_yaml_file)
+Ovchipkaart.configure_with('config/credentials.yml')
+```
 
 *Don't forget to put this in your .gitignore*
 
@@ -45,11 +45,11 @@ Because the TLS doesn't provide an API for the OV Chipkaart, it scrapes the webs
 
 **Balance and timestamp**
 
-    ```ruby
-    ov_chipkaart = Ovchipkaart::Api.new
-    ov_chipkaart.balance         #=> € 45,30
-    ov_chipkaart.last_updated    #=> (12-10-2013 20:57)
-    ```
+```ruby
+ov_chipkaart = Ovchipkaart::Api.new
+ov_chipkaart.balance         #=> € 45,30
+ov_chipkaart.last_updated    #=> (12-10-2013 20:57)
+```
 
 **Journeys and transactions**
 
@@ -57,9 +57,9 @@ Every journey or transaction is a hash with ten keys: `datum`, `checkin`, `vertr
 
 Based on the `transactie` key everything is sorted in six categories:
 
-    ```ruby
-    ov_chipkaart = Ovchipkaart::Api.new
-    ```
+```ruby
+ov_chipkaart = Ovchipkaart::Api.new
+```
 
 1. `ov_chipkaart.journeys` contains all the finish journeys.
 2. `ov_chipkaart.checkins` contains all the checkins, when the journey starts.
