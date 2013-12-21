@@ -12,3 +12,7 @@ group :development, :test do
   gem 'pry', require: false
   gem 'rspec'
 end
+
+group :test do
+  gem 'rake'
+end
