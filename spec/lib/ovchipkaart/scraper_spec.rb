@@ -4,7 +4,7 @@ require 'capybara/rspec'
 # The scraper methods can't run independently
 RSpec.configure { |config| config.order = 'default' }
 
-describe Ovchipkaart::Scraper do
+describe Ovchipkaart::Scraper, :web_driver do
   subject { described_class.new }
 
   describe '.scrape' do
