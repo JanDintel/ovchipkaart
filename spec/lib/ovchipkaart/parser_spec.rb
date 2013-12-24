@@ -34,10 +34,12 @@ describe Ovchipkaart::Parser do
   end
 
   describe 'downloaded csv file' do
-    let(:file_1_path) { "#{Dir.getwd}/tmp/downloads/transacties_-0001.csv" }
-    let(:file_2_path) { "#{Dir.getwd}/tmp/downloads/transacties_-0002.csv" }
+    let(:tmp_dir)     { "#{Dir.getwd}/tmp/downloads"}
+    let(:file_1_path) { "#{tmp_dir}/transacties_-0001.csv" }
+    let(:file_2_path) { "#{tmp_dir}/transacties_-0002.csv" }
 
     before do
+      FileUtils.mkdir_p tmp_dir
       File.open(file_1_path, 'w+') { |file| file.write csv_file }
       File.new file_2_path, 'w+'
     end
