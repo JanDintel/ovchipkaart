@@ -33,7 +33,7 @@ describe Ovchipkaart do
       end
 
       it 'raises an Ovchipkaart::ConfigurationError with an invalid YAML file' do
-        expect{ subject.configure_with('spec/fixtures/invalid.yml') }.to raise_error Ovchipkaart::ConfigurationError, 'YAML configuration file contains invalid syntax'
+        expect{ subject.configure_with('spec/fixtures/invalid_configuration.yml') }.to raise_error Ovchipkaart::ConfigurationError, 'YAML configuration file contains invalid syntax'
       end
     end
   end
