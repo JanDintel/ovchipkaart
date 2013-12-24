@@ -1,3 +1,4 @@
+# coding: utf-8
 module Ovchipkaart
   class Api
     attr_reader :parser

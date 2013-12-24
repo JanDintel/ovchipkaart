@@ -1,3 +1,4 @@
+# coding: utf-8
 module Ovchipkaart
   module Setup
     # YAML Configuration

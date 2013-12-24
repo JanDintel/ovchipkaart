@@ -1,3 +1,4 @@
+# coding: utf-8
 module Ovchipkaart
   class Scraper
     include Capybara::DSL
