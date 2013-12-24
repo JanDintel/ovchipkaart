@@ -5,7 +5,6 @@ require 'capybara/rspec'
 RSpec.configure { |config| config.order = 'default' }
 
 describe Ovchipkaart::Scraper, :web_driver do
-  subject { described_class.new }
 
   describe '.scrape' do
     it 'scrapes the ovchipkaart website' do
