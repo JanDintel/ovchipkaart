@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Ovchipkaart::Parser do
-  let(:csv_file_path) { 'spec/fixtures/test_transaction_1.csv' }
-  let(:csv_file)      { File.read 'spec/fixtures/test_transaction_1.csv' }
+  let(:csv_file)      { Factory.csv_file }
   let(:csv_file_stub) { described_class.any_instance.stub(:csv_file).and_return csv_file }
 
   describe '.process_transactions' do
