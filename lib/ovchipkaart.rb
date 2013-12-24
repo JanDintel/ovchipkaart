@@ -1,4 +1,4 @@
-# coding: utf-8
+# encoding: utf-8
 require 'ovchipkaart/setup'
 require 'ovchipkaart/version'
 require 'ovchipkaart/scraper'
