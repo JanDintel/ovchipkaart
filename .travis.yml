@@ -1,5 +1,5 @@
 language: ruby
-bundler_args: --without development web_driver
+bundler_args: --without development
 script: 'bundle exec rspec --tag ~web_driver:true'
 env:
   - TRAVIS_CI=true
