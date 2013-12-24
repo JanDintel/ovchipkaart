@@ -1,7 +1,8 @@
 require 'spec_helper'
 require 'capybara/rspec'
 
-# The scraper methods can't run independently
+# Methods in the Ovchipkaart::Scraper class are,
+# dependent on the order of calling them.
 RSpec.configure { |config| config.order = 'default' }
 
 describe Ovchipkaart::Scraper, :web_driver do
