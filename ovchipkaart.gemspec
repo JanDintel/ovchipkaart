@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['janvanderpas@gmail.com']
   spec.description   = "An unofficial OV Chipkaart gem, which scrapes the OV Chipkaart website (ov-chipkaart.nl) and provides an easy to use Ruby API."
   spec.summary       = 'Unofficial Ruby OV Chipkaart API gem'
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/JanDintel/ovchipkaart'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.requirements         << 'chromedriver, v2.8'
+  spec.requirements         << 'chromedriver ~> v2.8'
   spec.post_install_message = "Make sure that the chromedriver is installed before using the ovchipkaart gem."
 
   spec.add_runtime_dependency 'nokogiri',           '~> 1.6.0'
