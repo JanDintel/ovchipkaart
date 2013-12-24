@@ -5,7 +5,10 @@ SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 if ENV['TRAVIS_CI'].nil?
   SimpleCov.start
 else
-  SimpleCov.start { add_filter 'lib/ovchipkaart/scraper.rb' }
+  SimpleCov.start do
+    add_filter 'lib/ovchipkaart/scraper.rb'
+    add_filter 'spec/lib/ovchipkaart/scraper_spec.rb'
+  end
 end
 
 require 'ovchipkaart'
