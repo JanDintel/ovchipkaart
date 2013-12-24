@@ -8,7 +8,7 @@ describe Ovchipkaart::Api do
   let(:forgotten_checkouts) { Factory.forgotten_checkouts }
   let(:additions)           { Factory.additions }
   let(:products)            { Factory.products }
-  let(:unclassified)        { [] }
+  let(:unclassified)        { Factory.unclassified }
 
   describe 'public API' do
     before { Ovchipkaart::Parser.any_instance.stub(:csv_file).and_return csv_file }

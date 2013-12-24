@@ -26,4 +26,8 @@ module Factory
   def self.products
     [{:datum=>"10-12-2013", :checkin=>"8:00", :vertrek=>"", :checkuit=>"", :bestemming=>"", :bedrag=>"", :transactie=>"Product op kaart gezet", :klasse=>"2", :product=>"Altijd Voordeel (maandabonnement)", :opmerkingen=>""}]
   end
+
+  def self.unclassified
+    [{:datum=>"9-12-2013", :checkin=>"7:00", :vertrek=>"", :checkuit=>"", :bestemming=>"", :bedrag=>"", :transactie=>"Foo", :klasse=>"", :product=>"", :opmerkingen=>""}]
+  end
 end

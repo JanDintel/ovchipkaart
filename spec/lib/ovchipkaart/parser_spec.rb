@@ -20,7 +20,7 @@ describe Ovchipkaart::Parser do
     specify { expect(subject.check_ins.count).to      eql 5 }
     specify { expect(subject.additions.count).to      eql 1 }
     specify { expect(subject.products.count).to       eql 1 }
-    specify { expect(subject.others.count).to         eql 0 }
+    specify { expect(subject.others.count).to         eql 1 }
     specify {
       expect(subject.forgotten_check_outs.count).to   eql 1 }
   end
