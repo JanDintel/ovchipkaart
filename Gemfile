@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'capybara'
-gem 'selenium-webdriver'
-gem 'chromedriver-helper', github: 'mars/chromedriver-helper', ref: '3be3d'
+gem 'mechanize'
+gem 'capybara-mechanize'
 
 gem 'coveralls', require: false
 

@@ -1,24 +1,26 @@
 # encoding: utf-8
 module Ovchipkaart
   class Scraper
+    attr_reader :balance
+
     include Capybara::DSL
 
-    attr_reader :balance
+    Capybara.app_host = 'https://www.ov-chipkaart.nl'
 
     def self.scrape
       scraper = new
       scraper.visit_ovchipkaart
       scraper.login_user
       scraper.visit_transaction_overview
+      scraper.find_balance
       scraper.select_transaction_period
       scraper.checkbox_all_transactions
       scraper.download_transaction_history
-      scraper.find_balance
       scraper
     end
 
     def visit_ovchipkaart
-      visit('https://www.ov-chipkaart.nl/login/')
+      visit('/login/')
       accept_cookies if need_to_accept_cookies?
       self
     end
@@ -35,6 +37,10 @@ module Ovchipkaart
       self
     end
 
+    def find_balance
+      @balance = all('span', text: /[€,\d]/)[6].text
+    end
+
     def select_transaction_period
       select('2013', from: 'periodes')
       click_button 'Transacties tonen'
@@ -48,11 +54,7 @@ module Ovchipkaart
 
     def download_transaction_history
       click_link 'Opslaan als CSV'
-      self
-    end
-
-    def find_balance
-      @balance = all('span', text: /[€,\d]/)[5].text
+      File.open("#{Dir.getwd}/tmp/downloads/transactie_#{Time.now.utc.to_i}.csv", 'w+') { |file| file.write self.body }
     end
 
     private

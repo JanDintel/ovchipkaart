@@ -39,6 +39,14 @@ describe Ovchipkaart::Scraper, :web_driver do
     end
   end
 
+  describe '#find_balance' do
+    before { subject.find_balance }
+
+    it 'scrapes the balance of the transaction overview page' do
+      expect(subject.balance).to match /(€+\s+\d*,+\d*)+\s*(\(\d*-\d*-\d*\s\d*:\d*\))/
+    end
+  end
+
   describe '#select_transaction_period' do
     it 'changes the time period of the transaction history' do
       expect(subject.select_transaction_period).to have_select('periodes', selected: '2013')
@@ -57,14 +65,6 @@ describe Ovchipkaart::Scraper, :web_driver do
     it 'downloads the transaction history' do
       # Give time to process download before calling downloads count again
       expect{ subject.download_transaction_history; sleep 3 }.to change{ Dir[download_path].length }.by(1)
-    end
-  end
-
-  describe '#find_balance' do
-    before { subject.find_balance }
-
-    it 'scrapes the balance of the transaction overview page' do
-      expect(subject.balance).to match /(€+\s+\d*,+\d*)+\s*(\(\d*-\d*-\d*\s\d*:\d*\))/
     end
   end
 end
