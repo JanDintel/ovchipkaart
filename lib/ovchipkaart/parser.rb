@@ -52,7 +52,7 @@ module Ovchipkaart
     end
 
     def last_downloaded_file
-      Dir['tmp/downloads/*'].sort_by{ |f| File.basename(f) }.first
+      Dir['tmp/downloads/*'].sort_by{ |f| File.basename(f) }.last
     end
 
     private

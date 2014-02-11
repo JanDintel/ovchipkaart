@@ -36,8 +36,8 @@ describe Ovchipkaart::Parser do
 
   describe 'downloaded csv file' do
     let(:tmp_dir)     { "#{Dir.getwd}/tmp/downloads"}
-    let(:file_1_path) { "#{tmp_dir}/transacties_-0001.csv" }
-    let(:file_2_path) { "#{tmp_dir}/transacties_-0002.csv" }
+    let(:file_1_path) { "#{tmp_dir}/transactie_14.csv" }
+    let(:file_2_path) { "#{tmp_dir}/transactie_13.csv" }
 
     before do
       FileUtils.mkdir_p tmp_dir
@@ -55,8 +55,8 @@ describe Ovchipkaart::Parser do
     end
 
     context '#last_downloaded_file' do
-      it 'sorts the file on their basename and returns first one' do
-        expect(subject.last_downloaded_file).to eql 'tmp/downloads/transacties_-0001.csv'
+      it 'sorts the file on their basename and returns last one' do
+        expect("#{Dir.getwd}/#{subject.last_downloaded_file}").to eql file_1_path
       end
     end
   end
