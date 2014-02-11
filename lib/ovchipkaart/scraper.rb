@@ -54,6 +54,7 @@ module Ovchipkaart
 
     def download_transaction_history
       click_link 'Opslaan als CSV'
+      FileUtils.mkdir_p("#{Dir.getwd}/tmp/downloads")
       File.open("#{Dir.getwd}/tmp/downloads/transactie_#{Time.now.utc.to_i}.csv", 'w+') { |file| file.write self.body }
     end
 
