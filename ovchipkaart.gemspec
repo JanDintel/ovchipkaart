@@ -19,12 +19,10 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.requirements         << 'chromedriver ~> v2.8'
-  spec.post_install_message = "Make sure that the chromedriver is installed before using the ovchipkaart gem."
-
   spec.add_runtime_dependency 'nokogiri',           '~> 1.6.0'
   spec.add_runtime_dependency 'capybara',           '~> 2.2.0'
-  spec.add_runtime_dependency 'selenium-webdriver', '~> 2.38.0'
+  spec.add_runtime_dependency 'mechanize'
+  spec.add_runtime_dependency 'capybara-mechanize'
 
   spec.add_development_dependency 'bundler',        '~> 1.3'
   spec.add_development_dependency 'rake'
