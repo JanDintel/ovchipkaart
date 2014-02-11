@@ -10,24 +10,12 @@ The OV Chipkaart is the Dutch national transportation card for public transport.
 
 ## Installation
 
-The OV Chipkaart gem makes use of the [chromedriver](https://code.google.com/p/chromedriver/) in combination with [capybara](https://github.com/jnicklas/capybara) and [selenium](https://github.com/SeleniumHQ/selenium) under the hood.
-
-For users with homebrew:
-
-    $ brew install chromedriver
-
-
 Add the gem to your Gemfile:
 
 ```ruby
 gem 'ovchipkaart'
 ```
 
-You might need to update the chromedriver after you ran `bundle install`:
-
-    $ chromedriver-update
-    
-*Chromedriver update with thanks to [flavorjones/chromedriver-helper](https://github.com/flavorjones/chromedriver-helper) and [mars/chromedriver-helper](https://github.com/flavorjones/chromedriver-helper/pull/9).*
 
 ## Configuration
 
@@ -79,11 +67,6 @@ The OV Chipkaart gem needs your credentials to login on the OV Chipkaart website
 
 If you have trouble configuring your credentials check the YAML for syntax errors and make sure that you only specify an `username` and `password`. Otherwise it will raise an error.
 
-**Chromedriver**
-
-Make sure you have installed the latest `chromedriver`. You can use homebrew to easily install the `chromedriver`. You might try running the `chromedriver-update` command, which downloads the helper for the `chromedriver` that is used by `selenium` with `capybara`.
-
-The OV Chipkaart gem current uses `chromedriver` version `2.8.241036`.
 
 **OV Chipkaart results**
 
@@ -94,7 +77,6 @@ Since this gem relies on scraping the OV Chipkaart website, it might break durin
 **TODO/IDEAS:**
 
 1. Clean up the downloaded files if they are too old
-2. Add configuration option for the webdriver. (Firefox and PhantonJS)
 3. Add configuration option for the download path
 4. Encrypt the credentials and decrypt them in runtime with an OTP.
 
