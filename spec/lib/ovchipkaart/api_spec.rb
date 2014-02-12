@@ -17,16 +17,8 @@ describe Ovchipkaart::Api do
     specify { expect(subject.products).to             eql Factory.products }
     specify { expect(subject.unclassified).to         eql Factory.unclassified }
 
-    context 'with web_driver', :web_driver do
-      @scraper = Ovchipkaart::Scraper.scrape
-
-      before do
-        Ovchipkaart::Scraper.stub(:scrape)      { double(@scraper, balance: "€ 30,51 (19-12-2013 20:57)") }
-      end
-
-      specify { expect(subject.balance).to              eql '€ 30,51' }
-      specify { expect(subject.exact_balance).to        eq 30.51 }
-      specify { expect(subject.last_updated).to         eql '(19-12-2013 20:57)' }
-    end
+    specify { expect(subject.balance).to              eql '€ 30,51' }
+    specify { expect(subject.exact_balance).to        eq 30.51 }
+    specify { expect(subject.last_updated).to         eql '(19-12-2013 20:57)' }
   end
 end
