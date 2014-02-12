@@ -1,14 +1,19 @@
 # encoding: utf-8
+
 module Ovchipkaart
   class Api
-    attr_reader :parser
 
     def initialize
-      @parser = parse_transactions
+      scraper
+      parser
     end
 
     def balance
       balance_and_date[:balance]
+    end
+
+    def exact_balance
+      balance_and_date[:balance].match(/\d*[,]\d*/)[0].gsub(',', '.').to_f.round 2
     end
 
     def last_updated
@@ -16,27 +21,27 @@ module Ovchipkaart
     end
 
     def journeys
-      parser.journeys
+      sorted_transactions.journeys
     end
 
     def checkins
-      parser.check_ins
+      sorted_transactions.check_ins
     end
 
     def forgotten_checkouts
-      parser.forgotten_check_outs
+      sorted_transactions.forgotten_check_outs
     end
 
     def additions
-      parser.additions
+      sorted_transactions.additions
     end
 
     def products
-      parser.products
+      sorted_transactions.products
     end
 
     def unclassified
-      parser.others
+      sorted_transactions.others
     end
 
     private
@@ -50,10 +55,13 @@ module Ovchipkaart
       @scraper ||= Scraper.scrape
     end
 
-    def parse_transactions
-      parser = Parser.new
+    def sorted_transactions
       parser.sort_csv_file
-      @parser ||= parser
+      parser
+    end
+
+    def parser
+      @parser ||= Parser.new
     end
   end
 end
