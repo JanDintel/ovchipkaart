@@ -7,7 +7,7 @@ describe Ovchipkaart::Api do
 
     before do
       Ovchipkaart::Parser.any_instance.stub(:csv_file)  { Factory.csv_file }
-      Ovchipkaart::Api.any_instance.stub(:scraper)
+      Ovchipkaart::Scraper.stub(:scrape)
     end
 
     specify { expect(subject.journeys).to             eql Factory.journeys }
