@@ -51,7 +51,16 @@ describe Ovchipkaart::Parser do
     end
 
     context '#csv_file' do
-      specify { expect(subject.csv_file).to eql csv_file }
+      context 'when present' do
+        specify { expect(subject.csv_file).to eql csv_file }
+      end
+
+      context 'when NOT present' do
+        specify do
+          subject.stub(:last_downloaded_file) { nil }
+          expect(subject.csv_file).to eql nil
+        end
+      end
     end
 
     context '#last_downloaded_file' do

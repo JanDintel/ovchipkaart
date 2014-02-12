@@ -48,7 +48,7 @@ module Ovchipkaart
     end
 
     def csv_file
-      File.read last_downloaded_file
+      File.read(last_downloaded_file) if !last_downloaded_file.nil?
     end
 
     def last_downloaded_file
