@@ -4,11 +4,10 @@ require 'spec_helper'
 describe Ovchipkaart::Api do
 
   describe 'public API' do
-    @scraper = Ovchipkaart::Scraper.scrape
 
     before do
       Ovchipkaart::Parser.any_instance.stub(:csv_file)  { Factory.csv_file }
-      Ovchipkaart::Api.any_instance.stub(:scraper)      { @scraper }
+      Ovchipkaart::Api.any_instance.stub(:scraper)
     end
 
     specify { expect(subject.journeys).to             eql Factory.journeys }
@@ -19,8 +18,10 @@ describe Ovchipkaart::Api do
     specify { expect(subject.unclassified).to         eql Factory.unclassified }
 
     context 'with web_driver', :web_driver do
+      @scraper = Ovchipkaart::Scraper.scrape
 
       before do
+        Ovchipkaart::Api.any_instance.stub(:scraper)      { @scraper }
         allow_message_expectations_on_nil
         @scraper.stub(:balance).and_return "€ 30,51 (19-12-2013 20:57)"
       end
