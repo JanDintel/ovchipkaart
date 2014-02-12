@@ -2,10 +2,13 @@
 
 module Ovchipkaart
   class Api
+    attr_reader :scraper, :sorted_transactions
 
     def initialize
-      scraper
-      parser
+      @scraper  = Scraper.scrape
+      parser    = Parser.new
+      parser.sort_csv_file
+      @sorted_transactions = parser
     end
 
     def balance
@@ -49,19 +52,6 @@ module Ovchipkaart
     def balance_and_date
       regex = scraper.balance.match(/(€.*)(\(.*\))/)
       {balance: regex[1].strip, date: regex[2]}
-    end
-
-    def scraper
-      @scraper ||= Scraper.scrape
-    end
-
-    def sorted_transactions
-      parser.sort_csv_file
-      parser
-    end
-
-    def parser
-      @parser ||= Parser.new
     end
   end
 end

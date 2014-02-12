@@ -7,7 +7,7 @@ describe Ovchipkaart::Api do
 
     before do
       Ovchipkaart::Parser.any_instance.stub(:csv_file)  { Factory.csv_file }
-      Ovchipkaart::Scraper.stub(:scrape)
+      Ovchipkaart::Scraper.stub(:scrape)                { double('scraper', balance: "€ 30,51 (19-12-2013 20:57)") }
     end
 
     specify { expect(subject.journeys).to             eql Factory.journeys }
@@ -21,9 +21,7 @@ describe Ovchipkaart::Api do
       @scraper = Ovchipkaart::Scraper.scrape
 
       before do
-        Ovchipkaart::Api.any_instance.stub(:scraper)      { @scraper }
-        allow_message_expectations_on_nil
-        @scraper.stub(:balance).and_return "€ 30,51 (19-12-2013 20:57)"
+        Ovchipkaart::Scraper.stub(:scrape)      { double(@scraper, balance: "€ 30,51 (19-12-2013 20:57)") }
       end
 
       specify { expect(subject.balance).to              eql '€ 30,51' }
